@@ -287,7 +287,7 @@ public:
 		if (this->_debug) {
 			cout << " [d] Copy constructor called. " << endl;
 		}
-		cloneTree(other._root); 
+		_root = cloneTree(other._root); 
 	}
 
 	/* Move constructor */
@@ -312,7 +312,7 @@ public:
 		if(this != &other){
 			this->makeEmpty();
 
-			cloneTree(other._root);
+			this->_root = cloneTree(other._root);
 		}
 		
 		return *this;
@@ -324,6 +324,7 @@ public:
 		if (this->_debug) {
 			cout << " [d] Move assignment operator called. " << endl;
 		}
+		if(!this->empty()) this->makeEmpty();
 		this->_root = other._root;
 		other._root = nullptr;
 		return *this;

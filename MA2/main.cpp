@@ -1,3 +1,42 @@
+/*MA2 Conceptual Questions
+
+What is a move constructor?
+-A move constructor is a specialized constructor that transfers the ownership of
+of resoures from an exisitng object to a new object while leaving the old
+object in memory but with its data members unspecified.
+
+What is a move assignment operator?
+-A move assignment operator is similar to the move constructor, though instead
+of transfering resources from an existing object to a new object, it transfers
+resources from one existing object to another exisitng object. This is why its
+important to ensure that the object you are moving to is empty before trying to transfer
+resources to it.
+
+Time Complexity Explanations
+
+BST::empty();
+This has a worst case time complexity of O(1), because the function simply
+checks if the root is nullptr or not.
+
+BST::add();
+This has a worst case time complexity of O(n), because the function depends
+on the height of the tree and in the worst case scenario for an unbalanced
+tree the height equals the number of nodes n.
+
+BST::makeEmpty();
+This has a worst case time complecity of O(n), because you must visit every 
+node in the tree meaning there will have to be n iterations.
+
+BST::printLevelOrder()
+This has a worst case time complexity of O(n), because for this type of printing
+you have to visit each node to add it to the queue to be printed.
+
+BST::CloneTree()
+This has a worst case time complexity of O(n), because you have to visit each node
+so you can copy its value meaning n iterations.
+*/
+
+
 #include <iostream>
 #include "BST.h" 
 
