@@ -30,8 +30,15 @@ class Node
         return left;
     };
 
-    int& getHeight() const {
-        return height;
+    int& Height() const {
+        if(this == nullptr)
+        {
+            return -1
+        }
+        else
+        {
+            return height;
+        }
     };
 
     //setters
@@ -54,12 +61,6 @@ class Node
     void setHeight(int newHeight){
         height = newHeight;
     };
-
-    //Rotation functions
-    void rotateLeft(Node* N)
-    {
-        
-    }
 
     private:
     T key;
