@@ -1,71 +1,63 @@
 #pragma once
 
-template <typename T>
+template <typename F, typename E>
 class Node
 {
     public:
-    Node(T val, T key)
+    
+    Node(F newKey, E newVal)
     {
-        this->key = key;
-        this->value = val; 
+        this->key = newKey;
+        this->value = newVal; 
         this->left = nullptr;
         this->right = nullptr;
-        this->height = 0;
+        this->height = 1;
     };
 
-    //getters
-    T& getKey() const {
-        return key;
-    };
+    Node<F,E>* deepCopy(const Node<F,E>* other)
+    {
+        if(!other) return nullptr;
+        Node<F,E>* newNode = new Node<F,E>(other->key, other->value);
+        newNode->left = deepCopy(other->left);
+        newNode->right = deepCopy(other->right);
+        return newNode;
+    }
 
-    T& getValue() const {
-        return value;
-    };
+    Node<F,E>& operator=(const Node<F,E>& other){
+        if(this == &other) return *this;
 
-    Node<T>*getRight() const {
-        return right;
-    };
+        delete left;
+        delete right;
 
-    Node<T>*getLeft() const {
-        return left;
-    };
+        value = other->value;
+        key = other->key;
+        this->left = deepCopy(other->left);
+        this->right = deepCopy(other->right);
 
-    int& Height() const {
-        if(this == nullptr)
-        {
-            return -1
-        }
-        else
-        {
-            return height;
-        }
-    };
+        return *this;
+    }
 
-    //setters
-    void setKey(T newKey){
-        key = newKey;
-    };
+    //Getters
+    F getKey() const {return key;}
+    const E getValue() const {return value;}
+    Node<F,E>* getLeft() const {return left;}
+    Node<F,E>* getRight() const {return right;}
+    int Height() const {
+        if(this) return height;
+        else return -1;
+    }
 
-    void setValue(T newValue){
-        value = newValue;
-    };
-
-    void setRight(Node* newRight){
-        right = newRight;
-    };
-
-    void setLeft(Node* newLeft){
-        left = newLeft;
-    };
-
-    void setHeight(int newHeight){
-        height = newHeight;
-    };
+    //Setters
+    void setKey(F newKey) {key = newKey;}
+    void setValue(E newValue) {value = newValue;}
+    void setLeft(Node<F,E>* newLeft) {left = newLeft;}
+    void setRight(Node<F,E>* newRight) {right = newRight;}
+    void setHeight(int newHeight) {height = newHeight;}
 
     private:
-    T key;
-    T value;
-    Node<T>* left;
-    Node<T>* right;
+    F key;
+    E value;
+    Node<F,E>* left;
+    Node<F,E>* right;
     int height;
 };

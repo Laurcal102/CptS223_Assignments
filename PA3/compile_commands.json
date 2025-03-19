@@ -1,0 +1,14 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-std=c++11",
+      "-g",
+      "-Wall",
+      "-c",
+      "main.cpp"
+    ],
+    "directory": "/home/lauri/CptS223/CptS223_Assignments/PA3",
+    "file": "/home/lauri/CptS223/CptS223_Assignments/PA3/main.cpp"
+  }
+]
